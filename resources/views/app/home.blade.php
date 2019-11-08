@@ -138,7 +138,10 @@
               <h5 class="card-title">Cargar cedulón al sistema</h5>
             </div>
             <div class="card-body">
-              <form>
+            <form method="POST" action="{{ route('iniciarFinanciamiento') }}" accept-charset="UTF-8" enctype="multipart/form-data">
+            
+
+                        @csrf
                 
                 <div class="row">
                   <div class="col-md-12 pr-1">
@@ -147,7 +150,7 @@
                     <div class="form-group form-file-upload form-file-simple">
                       <label> </label>
                       <label class="custom-file-label" for="inputFile ">Archivo PDF del cedulón</label>
-                      <input type="file" class="form-control inputFileVisible" id="inputFile">
+                      <input name="file" type="file" class="form-control inputFileVisible" id="inputFile">
                   </div>
                   </div>
                 
@@ -162,8 +165,12 @@
 
               <div class="row">
                 <div class="col-md-12 pr-1">
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet facilis accusantium delectus. Quaerat est at vitae unde consequuntur ut facilis quam debitis nesciunt tenetur ipsum nostrum, aliquid distinctio libero repellendus!</p>
-
+                    <ul>
+                      <li>Seleccione en el panel tributario los Tributos a incluir.</li>
+                      <li>Descargue el cedulón a su ordenador con opción pago efectivo-hoy, elija los periodos.</li>
+                      <li>Cargue el cedulón al sistema de financiamiento.</li>
+                      <li>Guardar el PDF y continúe en PAGOS.</li>
+                    </ul>
                 </div>
                   
               </div>
