@@ -46,7 +46,7 @@ return [
         'local' => [
             'driver' => 'local',
            // 'root' => public_path().'/cedulones',
-           'root' => storage_path('app/public'),
+           'root' => storage_path(),
         ],
 
         'public' => [

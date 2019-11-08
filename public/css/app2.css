@@ -20,3 +20,22 @@
       height: 100%;
     }  
   }
+
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  .form-group.form-file-upload.form-file-simple {
+    text-align: center;
+}
+
+.card-user form .form-group {
+  margin-bottom: 0px;
+}
+
+.card.card-user.formulario {
+  min-height: 405px;
+}

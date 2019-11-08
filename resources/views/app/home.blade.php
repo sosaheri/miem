@@ -133,7 +133,7 @@
           </div>
         </div>
         <div class="col-md-5">
-          <div class="card card-user">
+          <div class="card card-user formulario">
             <div class="card-header">
               <h5 class="card-title">Cargar cedulón al sistema</h5>
             </div>
@@ -148,9 +148,17 @@
                     
 
                     <div class="form-group form-file-upload form-file-simple">
-                      <label> </label>
-                      <label class="custom-file-label" for="inputFile ">Archivo PDF del cedulón</label>
-                      <input name="file" type="file" class="form-control inputFileVisible" id="inputFile">
+                        <label> </label>
+                     
+               
+                      <label for="file-upload" class="custom-file-upload">
+                      <i class="fa fa-cloud-upload"></i> Agregar archivo PDF del cedulón</label>
+
+    <input id="file-upload" name='file' type="file" style="display:none;">
+    <label id="file-name"></label>
+
+
+
                   </div>
                   </div>
                 

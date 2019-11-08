@@ -89,7 +89,8 @@ class UserController extends Controller
             
            
 
-          dd( $data[5] ); //2 numero comprobante 5 monto
+           //$data[2] //2 numero comprobante 
+           // ltrim($data[5], '$'); // 5 monto
 
     
 
