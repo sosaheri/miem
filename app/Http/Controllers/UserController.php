@@ -17,6 +17,7 @@ use Storage;
 use Auth;
 use Spatie\PdfToText\Pdf;
 use App\Cedulon;
+use App\Financiamiento;
 
 class UserController extends Controller
 {
@@ -77,8 +78,6 @@ class UserController extends Controller
 
     public function financiamiento(Request $request){        
         // Recibo todos los datos desde el formulario de cedulon
-    
-           
  
         if( $request->hasFile('file') ){
                 $path = $request->file->store('public');
@@ -97,12 +96,15 @@ class UserController extends Controller
                         $data = explode("\n", strstr( strstr($text, 'TOTAL A PAGAR'), 
                         'VALUAC.',
                         true));
-                                    //$data[2] //2 numero comprobante 
-                                    // ltrim($data[5], '$'); // 5 monto
 
-            
-                      Session::flash('success', 'cargo exitosamente el PDF !');
-                       return Redirect::to('/');
+                                                                       
+                      //Session::flash('success', 'cargo exitosamente el PDF !');
+                       //return Redirect::to('/');
+
+                        $comprobante = $data[2];         //2 numero comprobante 
+                        $monto =  ltrim($data[5], '$'); // 5 monto
+                        $user = Auth::user();
+                       return view('app.planillaFinaciamiento', ['user'=>$user, 'comprobante'=>$comprobante, 'monto'=>$monto ]);
 
                 }else{
 
