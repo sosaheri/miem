@@ -111,6 +111,42 @@
 @else
 
     <div class="content">
+
+
+    @if ($message = Session::get('success'))
+
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <div class="alert alert-success alert-with-icon alert-dismissible fade show" data-notify="container">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+              <i class="nc-icon nc-simple-remove"></i>
+            </button>
+            <span data-notify="icon" class="nc-icon nc-bell-55"></span>
+            <span data-notify="message">{{ $message }} </span>
+          </div>
+        </div> 
+    </div>
+
+    @endif
+
+    @if ($message = Session::get('error'))
+
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+          <div class="alert alert-danger alert-with-icon alert-dismissible fade show" data-notify="container">
+            <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+              <i class="nc-icon nc-simple-remove"></i>
+            </button>
+            <span data-notify="icon" class="nc-icon nc-bell-55"></span>
+            <span data-notify="message">{{ $message }} </span>
+          </div>
+        </div> 
+    </div>
+
+    @endif
+
       <div class="row">
         <div class="col-md-7">
           <div class="card ">
@@ -154,7 +190,7 @@
                       <label for="file-upload" class="custom-file-upload">
                       <i class="fa fa-cloud-upload"></i> Agregar archivo PDF del cedulón</label>
 
-    <input id="file-upload" name='file' type="file" style="display:none;">
+    <input id="file-upload" name='file' type="file" style="display:none;" required>
     <label id="file-name"></label>
 
 

@@ -16,6 +16,7 @@ use Input;
 use Storage;
 use Auth;
 use Spatie\PdfToText\Pdf;
+use App\Cedulon;
 
 class UserController extends Controller
 {
@@ -76,37 +77,51 @@ class UserController extends Controller
 
     public function financiamiento(Request $request){        
         // Recibo todos los datos desde el formulario de cedulon
-
-        
-
-       $text = (new Pdf())
-           ->setPdf(public_path().'/'.'2HeribertoSosaMunicipalidaddeCordoba-27_10_2019.PDF' )
-           ->text();
-
-           $data = explode("\n", strstr( strstr($text, 'TOTAL A PAGAR'), 
-                                        'VALUAC.',
-                                        true));
-            
-           
-
-           //$data[2] //2 numero comprobante 
-           // ltrim($data[5], '$'); // 5 monto
-
     
-
-           //obtenemos el campo file definido en el formulario
-           $file = $request->file('file');
- 
-           //obtenemos el nombre del archivo
-           $nombre =   Auth::user()->id . str_replace(' ', '', Auth::user()->name)  . str_replace(' ', '', $file->getClientOriginalName());
            
-           //indicamos que queremos guardar un nuevo archivo en el disco local
-           \Storage::disk('local')->put($nombre,  \File::get($file));
-     
-         
+ 
+        if( $request->hasFile('file') ){
+                $path = $request->file->store('public');
+                $id = Cedulon::create(['path' => $path ]);
 
-           Session::flash('success', 'Editado Satisfactoriamente !');
+                $text = (new Pdf())
+                ->setPdf(public_path().'/'. $id->getUrl() )
+                ->text();
+
+
+                $firstLine  = explode("\n", $text);
+               
+                if($firstLine[0] == 'Contribución sobre' ){
+                    
+
+                        $data = explode("\n", strstr( strstr($text, 'TOTAL A PAGAR'), 
+                        'VALUAC.',
+                        true));
+                                    //$data[2] //2 numero comprobante 
+                                    // ltrim($data[5], '$'); // 5 monto
+
+            
+                      Session::flash('success', 'cargo exitosamente el PDF !');
+                       return Redirect::to('/');
+
+                }else{
+
+                    unlink(public_path().'/'. $id->getUrl() );
+
+                    //$item = Cedulon::find($id);
+                    //$item->delete();
+                    
+                    Cedulon::destroy($id);
+
+                    Session::flash('error', 'PDF incorrecto!');
                     return Redirect::to('/');
+
+                }
+                
+
+                
+            }      
+                   
 
         
     }

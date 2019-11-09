@@ -385,6 +385,7 @@ class ComposerStaticInitc344a7819b09ccdc9580384134f90303
     );
 
     public static $classMap = array (
+        'App\\Cedulon' => __DIR__ . '/../..' . '/app/Cedulon.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
