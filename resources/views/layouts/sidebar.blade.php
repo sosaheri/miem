@@ -50,19 +50,19 @@
                 </a>
               </li>
               <li>
-                  <a href="./historical.html">
+                  <a href="#">
                     <i class="nc-icon nc-tile-56"></i>
                     <p>Historial de Financiamientos</p>
                   </a>
                 </li>
-            <li>
+            <!-- <li>
               <a href="./pago.html">
                 <i class="nc-icon nc-money-coins"></i>
                 <p>Pagos</p>
               </a>
-            </li>
-            <li>
-                <a href="./logout">
+            </li> -->
+            <li>  
+                <a href="{{ url('/logout') }}">
                   <i class="nc-icon nc-button-power"></i>
                   <p>Salir</p>
                 </a>

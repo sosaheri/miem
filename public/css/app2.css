@@ -39,3 +39,14 @@
 .card.card-user.formulario {
   min-height: 405px;
 }
+
+
+
+.main-panel {
+
+  background: repeat-x url(../app/assets/img/logo1.png) !important;
+}
+
+body {
+  background: repeat url(../app/assets/img/logo1.png) !important;
+}

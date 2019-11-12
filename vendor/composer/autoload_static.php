@@ -131,6 +131,7 @@ class ComposerStaticInitc344a7819b09ccdc9580384134f90303
         'C' => 
         array (
             'Cron\\' => 5,
+            'CodemanCompany\\LaravelMercadoPago\\' => 34,
             'Carbon\\' => 7,
         ),
         'B' => 
@@ -381,6 +382,10 @@ class ComposerStaticInitc344a7819b09ccdc9580384134f90303
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
+        'CodemanCompany\\LaravelMercadoPago\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/codemancompany/laravel-mercadopago/src',
+        ),
         'Carbon\\' => 
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
@@ -483,6 +488,11 @@ class ComposerStaticInitc344a7819b09ccdc9580384134f90303
         'Carbon\\Traits\\Units' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Units.php',
         'Carbon\\Traits\\Week' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Traits/Week.php',
         'Carbon\\Translator' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Translator.php',
+        'CodemanCompany\\LaravelMercadoPago\\Facades\\MP' => __DIR__ . '/..' . '/codemancompany/laravel-mercadopago/src/Facades/MP.php',
+        'CodemanCompany\\LaravelMercadoPago\\MP' => __DIR__ . '/..' . '/codemancompany/laravel-mercadopago/src/MP.php',
+        'CodemanCompany\\LaravelMercadoPago\\MPRestClient' => __DIR__ . '/..' . '/codemancompany/laravel-mercadopago/src/MP.php',
+        'CodemanCompany\\LaravelMercadoPago\\MercadoPagoException' => __DIR__ . '/..' . '/codemancompany/laravel-mercadopago/src/MP.php',
+        'CodemanCompany\\LaravelMercadoPago\\Providers\\MercadoPagoServiceProvider' => __DIR__ . '/..' . '/codemancompany/laravel-mercadopago/src/Providers/MercadoPagoServiceProvider.php',
         'Cron\\AbstractField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/AbstractField.php',
         'Cron\\CronExpression' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/CronExpression.php',
         'Cron\\DayOfMonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/DayOfMonthField.php',

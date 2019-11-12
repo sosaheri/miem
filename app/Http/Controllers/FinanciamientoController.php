@@ -1,6 +1,10 @@
 <?php
+      
 
 namespace App\Http\Controllers;
+
+ // SDK de Mercado Pago
+//require   '../vendor/autoload.php';
 
 use App\Financiamiento;
 use Illuminate\Http\Request;
@@ -12,6 +16,8 @@ use App\Cedulon;
 use App\User;
 use Session;
 use Redirect;
+use MercadoPago;
+
 
 class FinanciamientoController extends Controller
 {
@@ -38,85 +44,71 @@ class FinanciamientoController extends Controller
 
         //ir a checkout
 
-         Session::flash('success', 'exito con cosa, la cosa');
-        return Redirect::to('/');
+        return redirect()->route('checkout', [$request->monto]);
         
     }
 
+    public function checkout( $monto ){
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+        //cambiar formato de decimales en el monto
+        $montoNumber = str_replace('.', '', $monto);
+        $monto = str_replace(',', '.', $montoNumber);
+  
+        // Agrega credenciales
+        // MercadoPago\SDK::setAccessToken('TEST-5660167809190947-110911-d4b5794022464f174ad13d4615ef51a1-487722136');
+
+        //token de prueba para sandbox
+        MercadoPago\SDK::setAccessToken('TEST-3166106669218178-111215-af3d38550dfe7c8ec519e776765f812f-488712845');
+
+
+        // Crea un objeto de preferencia
+        $preference = new MercadoPago\Preference();
+        
+       // Crea un ítem en la preferencia
+        $item = new MercadoPago\Item();
+        $item->title = 'Financiamiento';
+        $item->quantity = 1;
+        $item->unit_price = (float) $monto;
+        $preference->items = array($item);
+        $preference->backurl = array(
+            "success" =>  app_path() . "/success",
+            "failure" => app_path() .  "/failure",
+            "pending" => app_path() . "/pending"
+        );
+        $preference->save();
+            
+        //return view('app.chekout', ['preference'=>$preference ]);
+        return view('app.chekout', ['preference'=>$preference ]);
+
+        
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    
+    public function callback(Request $request){
+
+       // dd($request);
+
+        $usuario_id = Auth::user()->id;
+        $payment_id  = $request->payment_id;
+        $merchant_order_id = $request->merchant_order_id;
+        $payment_status = $request->payment_status;
+
+
+        //actualizar financiamiento
+
+        $finan =Financiamiento::where('id', '=', $usuario_id )->first();       
+
+        $finan->PaymentID =  $payment_id;
+        $finan->MerchantId = $merchant_order_id;
+        $finan->status = $payment_status;
+ 
+        // Guardamos en base de datos
+        $finan->save();
+
+        return Redirect::to('/');
+
+        
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *;
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Financiamiento  $financiamiento
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Financiamiento $financiamiento)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Financiamiento  $financiamiento
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Financiamiento $financiamiento)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Financiamiento  $financiamiento
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Financiamiento $financiamiento)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Financiamiento  $financiamiento
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Financiamiento $financiamiento)
-    {
-        //
-    }
+    
 }

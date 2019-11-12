@@ -80,7 +80,7 @@ class UserController extends Controller
         // Recibo todos los datos desde el formulario de cedulon
  
         if( $request->hasFile('file') ){
-                $path = $request->file->store('public');
+                $path = $request->file->store('/');
                 $id = Cedulon::create(['path' => $path ]);
 
                 $text = (new Pdf())
@@ -104,6 +104,7 @@ class UserController extends Controller
                         $comprobante = $data[2];         //2 numero comprobante 
                         $monto =  ltrim($data[5], '$'); // 5 monto
                         $user = Auth::user();
+                        
                        return view('app.planillaFinaciamiento', ['user'=>$user, 'comprobante'=>$comprobante, 'monto'=>$monto ]);
 
                 }else{

@@ -25,3 +25,7 @@ Route::get('miUsuario/{id}', 'UserController@verPerfil')->name('miUsuario');
 
 Route::post('iniciarFinanciamiento', 'UserController@financiamiento')->name('iniciarFinanciamiento');
 Route::post('planillaFinanciamiento', 'FinanciamientoController@llenado')->name('planillaFinanciamiento');
+Route::get('checkout/{monto}', 'FinanciamientoController@checkout')->name('checkout');
+
+Route::get('callback', 'FinanciamientoController@callback')->name('callback');
+
