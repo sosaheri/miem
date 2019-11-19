@@ -25,6 +25,6 @@ class DropColumnMetodoDePagoTableFinanciamiento extends Migration
      */
     public function down()
     {
-       ;
+        
     }
 }

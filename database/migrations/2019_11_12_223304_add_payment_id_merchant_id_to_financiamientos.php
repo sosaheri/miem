@@ -14,8 +14,8 @@ class AddPaymentIdMerchantIdToFinanciamientos extends Migration
     public function up()
     {
         Schema::table('financiamientos', function (Blueprint $table) {
-            $table->string('PaymentId');
-            $table->string('MerchantId');
+            $table->string('PaymentId')->nullable();
+            $table->string('MerchantId')->nullable();
         });
     }
 
@@ -27,7 +27,8 @@ class AddPaymentIdMerchantIdToFinanciamientos extends Migration
     public function down()
     {
         Schema::table('financiamientos', function (Blueprint $table) {
-            //
+            $table->dropColumn(['PaymentId']);
+            $table->dropColumn(['MerchantId']);
         });
     }
 }

@@ -14,7 +14,7 @@ class AddStatusFinanciamiento extends Migration
     public function up()
     {
         Schema::table('financiamientos', function (Blueprint $table) {
-            $table->string('status');
+            $table->string('status')->nullable();
            
         });
     }

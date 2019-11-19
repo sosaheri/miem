@@ -22,7 +22,7 @@ use App\Financiamiento;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::where('id', '!=', 1 )->get();
 
         return view('app.gestionUsuarios', compact('users')); 
     }
@@ -46,6 +46,9 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->address = $request->address;
+        $user->city = $request->city;
+        $user->zip = $request->zip;
     
         // Actualizo los datos en la tabla 'user'
         $user->save();

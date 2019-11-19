@@ -14,7 +14,7 @@ class AddZipToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('zip');
+            $table->string('zip')->nullable();
         });
     }
 

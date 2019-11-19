@@ -49,29 +49,19 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-10 pr-1">
+                    <div class="col-md-12 ">
                       <div class="form-group">
                         <label>Fecha</label>
                         <input type="date"  readonly="readonly" name="fecha" class="form-control" value="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
                       </div>
                     </div>
-                    <div class="col-md-2 pl-1">
-                      <div class="form-group">
-                        <label>Cuotas</label>
-                        
-                        <select name="cuotas" class="form-control" id="">
-                            <option value="3">3</option>
-                            <option value="6">6</option>
-                            <option value="12">12</option>
-                        </select>
-                      </div>
-                    </div>
+                  
                   </div>
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Dirección</label>
-                        <input type="text" name="direccion" class="form-control" placeholder="Dirección" value="">
+                        <input type="text" name="direccion" class="form-control" placeholder="Dirección" value="{{  $user->address}}">
                       </div>
                     </div>
                   </div>
@@ -79,7 +69,7 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Ciudad</label>
-                        <input type="text" name="ciudad" class="form-control" placeholder="Ciudad" value="">
+                        <input type="text" name="ciudad" class="form-control" placeholder="Ciudad" value="{{  $user->city}}">
                       </div>
                     </div>
                     

@@ -21,15 +21,20 @@ use MercadoPago;
 
 class FinanciamientoController extends Controller
 {
+
     public function llenado(Request $request){
+
+        //cambiar formato de decimales en el monto
+        $montoNumber = str_replace('.', '', $request->monto );
+        $monto = str_replace(',', '.', $montoNumber);
         
         //crear financiamiento
         Financiamiento::create([
             'user' => Auth::user()->id ,
-            'monto' => (float) $request->monto ,
+            'monto' => (float) $monto ,
             'comprobante' => $request->comprobante ,
             'fecha' => $request->fecha ,
-            'cuota' => $request->cuotas     
+            'cuota' => 0    
         ]);
         //actualizar usuario
         $user=User::where('id', '=', Auth::user()->id )->first();
@@ -39,7 +44,7 @@ class FinanciamientoController extends Controller
         $user->city =  $request->ciudad;
         $user->zip =  $request->zip;
         
-        // Guardamos en base de datos
+        // Guardamos en base de datos   
         $user->save();
 
         //ir a checkout
@@ -82,11 +87,10 @@ class FinanciamientoController extends Controller
 
         
     }
-
-    
+   
     public function callback(Request $request){
 
-       // dd($request);
+        //dd($request);
 
         $usuario_id = Auth::user()->id;
         $payment_id  = $request->payment_id;
@@ -96,7 +100,9 @@ class FinanciamientoController extends Controller
 
         //actualizar financiamiento
 
-        $finan =Financiamiento::where('id', '=', $usuario_id )->first();       
+        $finan =Financiamiento::where('user', '=', $usuario_id )
+                                ->whereNull('status')
+                                ->first();       
 
         $finan->PaymentID =  $payment_id;
         $finan->MerchantId = $merchant_order_id;
@@ -104,11 +110,28 @@ class FinanciamientoController extends Controller
  
         // Guardamos en base de datos
         $finan->save();
-
-        return Redirect::to('/');
+       // dd($usuario_id );
+        //return Redirect::to('/miHistorico', ['id'=> $usuario_id  ] );
+        return redirect()->route('miHistorico', ['id'=> $usuario_id  ]);
 
         
     }
+
+    public function miHistorico( $id ){
+
+        $finan =Financiamiento::where('user', '=', $id )->get(); 
+
+        return view('app.historico', compact('finan') );
+                 
+     }
+
+     public function historico( ){
+
+        $finan =Financiamiento::all(); 
+
+        return view('app.historico', compact('finan') );
+                 
+     }
 
     
 }

@@ -25,12 +25,7 @@
                   <div class="row">
                    
                     
-                    <div class="col-lg-12 mr-auto">
-                      <h5>24,6$
-                        <br>
-                        <small>Monto Financiado</small>
-                      </h5>
-                    </div>
+
                   </div>
                 </div>
               </div>
@@ -67,24 +62,10 @@
                     </div>
                   </div>
                   <div class="row">
-                    <div class="col-md-6 pr-1">
-                      <div class="form-group">
-                        <label>input</label>
-                        <input type="text" class="form-control" placeholder="Nombre" value="">
-                      </div>
-                    </div>
-                    <div class="col-md-6 pl-1">
-                      <div class="form-group">
-                        <label>input</label>
-                        <input type="text" class="form-control" placeholder="Apellido" value="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>Dirección</label>
-                        <input type="text" class="form-control" placeholder="Dirección" value="">
+                        <input type="text" class="form-control" placeholder="Dirección" value="{{ $user->address}}">
                       </div>
                     </div>
                   </div>
@@ -92,14 +73,14 @@
                     <div class="col-md-6 pr-1">
                       <div class="form-group">
                         <label>Ciudad</label>
-                        <input type="text" class="form-control" placeholder="Ciudad" value="">
+                        <input type="text" class="form-control" placeholder="Ciudad" value="{{ $user->city}}">
                       </div>
                     </div>
                     
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
                         <label>Código Postal</label>
-                        <input type="number" class="form-control" placeholder="Código Postal">
+                        <input type="number" class="form-control" placeholder="Código Postal" value="{{ $user->zip}}">
                       </div>
                     </div>
                     

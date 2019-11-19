@@ -43,18 +43,32 @@
 
             
             
-            <li>
+             <li>
                 <a href="{{ url('/miUsuario', Auth::user()->id) }}">
                   <i class="nc-icon nc-single-02"></i>
                   <p>Perfil</p>
                 </a>
               </li>
+
+              @if ( Auth::user()->hasRole('admin'))
               <li>
-                  <a href="#">
+                  <a href="{{ url('/historico' ) }}">
                     <i class="nc-icon nc-tile-56"></i>
                     <p>Historial de Financiamientos</p>
                   </a>
-                </li>
+              </li>
+
+              @else
+
+              <li>
+                  <a href="{{ url('/miHistorico', Auth::user()->id) }}">
+                    <i class="nc-icon nc-tile-56"></i>
+                    <p>Historial de Financiamientos</p>
+                  </a>
+              </li>
+
+              @endif
+
             <!-- <li>
               <a href="./pago.html">
                 <i class="nc-icon nc-money-coins"></i>
