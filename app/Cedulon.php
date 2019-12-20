@@ -10,6 +10,6 @@ class Cedulon extends Model
     protected $fillable = ['path'];
 
     public function getUrl (){
-        return \Storage::url($this->path);
+        return \Storage::url($this->pathe);
     }
 }
