@@ -5,6 +5,17 @@
 @if ( Auth::user()->hasRole('admin') )
 
     <div class="content">
+
+    <div class="row">
+
+<div class="col-md-12 titulo-home">
+
+    <img class="log-interno" src="{{ asset('app/assets/img/logo.png') }}" alt="Logo Miem">
+
+    <h2>MORATORIA MUNICIPAL EXTRAORDINARIA	RUBRO AUTOMOTOR<br> AL 50% SOBRE MONTO ORIGINAL (CAPITAL E INTERES)</h2>
+</div>
+
+</div>
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="card card-stats">
@@ -44,7 +55,7 @@
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category">Monto Financiado</p>
-                    <p class="card-title"> 1,345$
+                    <p class="card-title"> {{ $finan }}
                       <p>
                   </div>
                 </div>
@@ -70,7 +81,7 @@
                   <div class="col-7 col-md-8">
                     <div class="numbers">
                       <p class="card-category">Monto Pagado</p>
-                      <p class="card-title"> 700$
+                      <p class="card-title"> {{ $pagado }}
                         <p>
                     </div>
                   </div>
@@ -86,7 +97,7 @@
           </div>
 
       </div>
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-md-12">
           <div class="card ">
             <div class="card-header ">
@@ -104,7 +115,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
     
@@ -114,6 +125,8 @@
 
 
     @if ($message = Session::get('success'))
+
+
 
     <div class="row">
         <div class="col-md-6"></div>
@@ -147,6 +160,18 @@
 
     @endif
 
+   
+      <div class="row">
+
+        <div class="col-md-12 titulo-home">
+
+            <img class="log-interno" src="{{ asset('app/assets/img/logo.png') }}" alt="Logo Miem">
+
+            <h2>MORATORIA MUNICIPAL EXTRAORDINARIA	RUBRO AUTOMOTOR<br> AL 50% SOBRE MONTO ORIGINAL (CAPITAL E INTERES)</h2>
+        </div>
+      
+      </div>
+
       <div class="row">
         <div class="col-md-7">
           <div class="card ">
@@ -166,6 +191,11 @@
               allowfullscreen></iframe>
 
             </div>
+            
+            <div class="card-footer">
+              <h5 class="card-title">Pulse REGRESAR, para actualizar los datos.</h5>
+            </div>
+
           </div>
         </div>
         <div class="col-md-5">

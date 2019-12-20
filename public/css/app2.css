@@ -40,13 +40,62 @@
   min-height: 405px;
 }
 
+.logo, .sidebar-wrapper {
+  background-color: #f0fff6;
+}
 
+.card {
+
+  background-color: #c6f5e3;
+}
 
 .main-panel {
+
+  color: #fff;
+  background-color: #0b935e;
+}
+
+img.log-interno{
+  width: 100px;
+  margin-bottom: 30px;
+}
+
+.navbar.navbar-transparent {
+  border-bottom: 1px solid #0b935e;
+}
+
+.titulo-home {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-user .card-body {
+  min-height: 400px;
+}
+
+.payment-wait{
+ color: red;
+ font-weight: bold;
+
+}
+
+.payment-ok{
+  color: #23b585;
+  font-weight: bold;
+ }
+
+ .payment-404{
+  color: black;
+  font-weight: bold;
+ 
+ }
+
+/* .main-panel {
 
   background: repeat-x url(../app/assets/img/logo1.png) !important;
 }
 
 body {
   background: repeat url(../app/assets/img/logo1.png) !important;
-}
+} */
+

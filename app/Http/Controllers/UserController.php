@@ -22,7 +22,7 @@ use App\Financiamiento;
 class UserController extends Controller
 {
     public function index(){
-        $users = User::all();
+        $users = User::where('id', '!=', 1 )->get();
 
         return view('app.gestionUsuarios', compact('users')); 
     }
@@ -46,6 +46,9 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->address = $request->address;
+        $user->city = $request->city;
+        $user->zip = $request->zip;
     
         // Actualizo los datos en la tabla 'user'
         $user->save();
@@ -89,8 +92,10 @@ class UserController extends Controller
 
 
                 $firstLine  = explode("\n", $text);
+
                
-                if($firstLine[0] == 'Contribución sobre' ){
+               
+                if($firstLine[0] == 'Contribución sobre' && $firstLine[1] == 'AUTOMOTORES' ){
                     
 
                         $data = explode("\n", strstr( strstr($text, 'TOTAL A PAGAR'), 
@@ -101,22 +106,31 @@ class UserController extends Controller
                       //Session::flash('success', 'cargo exitosamente el PDF !');
                        //return Redirect::to('/');
 
-                        $comprobante = $data[2];         //2 numero comprobante 
-                        $monto =  ltrim($data[5], '$'); // 5 monto
+                        $comprobante = $data[2];         //2 numero comprobante    
+                        
+                        if( $data[5] == '' ){
+                            $monto =  ltrim($data[7], '$'); // 5 monto
+                        }else {
+                            $monto =  ltrim($data[5], '$');
+                        }
+
+                       // dd($monto);
+                        
                         $user = Auth::user();
                         
-                       return view('app.planillaFinaciamiento', ['user'=>$user, 'comprobante'=>$comprobante, 'monto'=>$monto ]);
+                        
+                        
+
+                       return view('app.planillaFinaciamiento', ['user'=>$user, 'comprobante'=>$comprobante, 'monto'=>$monto, 'idCed'=>$id->id ]);
 
                 }else{
 
                     unlink(public_path().'/'. $id->getUrl() );
 
-                    //$item = Cedulon::find($id);
-                    //$item->delete();
-                    
+                                      
                     Cedulon::destroy($id);
 
-                    Session::flash('error', 'PDF incorrecto!');
+                    Session::flash('error', 'PDF incorrecto, debe utilizar un cedulón para automoviles!');
                     return Redirect::to('/');
 
                 }

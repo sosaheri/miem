@@ -8,7 +8,7 @@ class Financiamiento extends Model
 {
 
     protected $fillable = [
-        'user', 'monto', 'comprobante', 'fecha', 'cuota', 'metodo_de_pago',
+        'user', 'monto', 'ref','id-cedulon', 'cuotasPagadas', 'comprobantePadre', 'comprobante', 'fecha', 'cuota', 'metodo_de_pago',
     ];
 
 

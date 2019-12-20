@@ -14,6 +14,10 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/configuracion', 'HomeController@configuracion')->name('configuracion');
+Route::post('updateConfig', 'HomeController@update')->name('updateConfig');
+
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('gestionUsuarios', 'UserController@index')->name('gestionUsuarios');
@@ -25,7 +29,21 @@ Route::get('miUsuario/{id}', 'UserController@verPerfil')->name('miUsuario');
 
 Route::post('iniciarFinanciamiento', 'UserController@financiamiento')->name('iniciarFinanciamiento');
 Route::post('planillaFinanciamiento', 'FinanciamientoController@llenado')->name('planillaFinanciamiento');
-Route::get('checkout/{monto}', 'FinanciamientoController@checkout')->name('checkout');
 
+
+Route::get('checkout/{monto}/{comprobante}/{cedulon}', 'FinanciamientoController@checkout')->name('checkout');
 Route::get('callback', 'FinanciamientoController@callback')->name('callback');
+
+Route::get('miHistorico/{id}', 'FinanciamientoController@miHistorico')->name('miHistorico');
+Route::get('historico/', 'FinanciamientoController@Historico')->name('historico');
+
+Route::get('detalleFinanciamiento/{id}', 'FinanciamientoController@detalle')->name('detalleFinanciamiento');
+
+
+Route::post('/status', 'FinanciamientoController@status')->name('status');
+
+Route::get('recibo/{comprobante}', 'PdfController@recibo')->name('recibo');
+
+
+
 

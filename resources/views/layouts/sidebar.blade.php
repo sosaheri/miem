@@ -3,7 +3,7 @@
         <div class="logo">
           
           <a href="/" class="simple-text logo-normal">
-             App Financiamiento
+            App Moratoria 2019/2020
   
           </a>
         </div>
@@ -33,7 +33,7 @@
                         <li >
                             <a href="/">
                             <i class="nc-icon nc-tv-2"></i>
-                            <p>Panel Usuarios</p>
+                            <p>Panel Contribuyentes</p>
                             </a>
                         </li>
                         
@@ -43,24 +43,48 @@
 
             
             
-            <li>
+             <li>
                 <a href="{{ url('/miUsuario', Auth::user()->id) }}">
                   <i class="nc-icon nc-single-02"></i>
-                  <p>Perfil</p>
+                  <p>Perfil Contribuyente</p>
                 </a>
               </li>
+
+              @if ( Auth::user()->hasRole('admin'))
               <li>
-                  <a href="#">
+                  <a href="{{ url('/historico' ) }}">
                     <i class="nc-icon nc-tile-56"></i>
-                    <p>Historial de Financiamientos</p>
+                    <p>Historial de Pagos</p>
                   </a>
-                </li>
+              </li>
+
+              @else
+
+              <li>
+                  <a href="{{ url('/miHistorico', Auth::user()->id) }}">
+                    <i class="nc-icon nc-tile-56"></i>
+                    <p>Historial de Financiamientos y Pagos</p>
+                  </a>
+              </li>
+
+              @endif
+
             <!-- <li>
               <a href="./pago.html">
                 <i class="nc-icon nc-money-coins"></i>
                 <p>Pagos</p>
               </a>
             </li> -->
+
+            @if ( Auth::user()->hasRole('admin'))
+              <li>
+                  <a href="{{ url('/configuracion' ) }}">
+                    <i class="nc-icon nc-tile-56"></i>
+                    <p>Configuración</p>
+                  </a>
+              </li>
+
+              @endif
             <li>  
                 <a href="{{ url('/logout') }}">
                   <i class="nc-icon nc-button-power"></i>

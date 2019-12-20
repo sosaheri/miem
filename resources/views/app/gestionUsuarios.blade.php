@@ -7,6 +7,18 @@
 
 
 <div class="content">
+
+<div class="row">
+
+<div class="col-md-12 titulo-home">
+
+    <img class="log-interno" src="{{ asset('app/assets/img/logo.png') }}" alt="Logo Miem">
+
+    <h2>MORATORIA MUNICIPAL EXTRAORDINARIA	RUBRO AUTOMOTOR<br> AL 50% SOBRE MONTO ORIGINAL (CAPITAL E INTERES)</h2>
+</div>
+
+</div>
+
     @if ($message = Session::get('success'))
 
     <div class="row">

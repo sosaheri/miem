@@ -1,0 +1,26 @@
+
+
+body {
+
+
+  background-color: #0b935e;
+}
+
+.logo img {
+    width: 150px;
+    margin-bottom: 50px;
+}
+
+.homenav {
+
+    color: #fff !important;
+    background-color: #89c1ab !important;
+}
+
+.login .card-body {
+    background-color: #c6f5e3;
+}
+
+.login .card-header {
+    background-color: #89c1ab;
+}
