@@ -29,19 +29,14 @@ Route::get('miUsuario/{id}', 'UserController@verPerfil')->name('miUsuario');
 
 Route::post('iniciarFinanciamiento', 'UserController@financiamiento')->name('iniciarFinanciamiento');
 Route::post('planillaFinanciamiento', 'FinanciamientoController@llenado')->name('planillaFinanciamiento');
-<<<<<<< HEAD
-
 
 Route::get('checkout/{monto}/{comprobante}/{cedulon}', 'FinanciamientoController@checkout')->name('checkout');
-=======
-Route::get('checkout/{monto}', 'FinanciamientoController@checkout')->name('checkout');
->>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
+
 Route::get('callback', 'FinanciamientoController@callback')->name('callback');
 
 Route::get('miHistorico/{id}', 'FinanciamientoController@miHistorico')->name('miHistorico');
 Route::get('historico/', 'FinanciamientoController@Historico')->name('historico');
 
-<<<<<<< HEAD
 Route::get('detalleFinanciamiento/{id}', 'FinanciamientoController@detalle')->name('detalleFinanciamiento');
 
 
@@ -50,7 +45,3 @@ Route::post('/status', 'FinanciamientoController@status')->name('status');
 Route::get('recibo/{comprobante}', 'PdfController@recibo')->name('recibo');
 
 
-
-
-=======
->>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd

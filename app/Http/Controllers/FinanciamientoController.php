@@ -24,7 +24,6 @@ class FinanciamientoController extends Controller
 
     public function llenado(Request $request){
 
-<<<<<<< HEAD
        //dd($request);
 
         //cambiar formato de decimales en el monto
@@ -68,30 +67,6 @@ class FinanciamientoController extends Controller
                 //ir a checkout
                 
                 return redirect()->route('checkout', [$request->monto, $request->comprobante, $request->idCed ]);
-=======
-        //cambiar formato de decimales en el monto
-        $montoNumber = str_replace('.', '', $request->monto );
-        $monto = str_replace(',', '.', $montoNumber);
-        
-        //crear financiamiento
-        Financiamiento::create([
-            'user' => Auth::user()->id ,
-            'monto' => (float) $monto ,
-            'comprobante' => $request->comprobante ,
-            'fecha' => $request->fecha ,
-            'cuota' => 0    
-        ]);
-        //actualizar usuario
-        $user=User::where('id', '=', Auth::user()->id )->first();
- 
-        // Seteamos un nuevo titulo
-        $user->address =  $request->direccion;
-        $user->city =  $request->ciudad;
-        $user->zip =  $request->zip;
-        
-        // Guardamos en base de datos   
-        $user->save();
->>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
 
         }else {
 
@@ -154,11 +129,7 @@ class FinanciamientoController extends Controller
         
     }
    
-<<<<<<< HEAD
      public function callback(Request $request){
-=======
-    public function callback(Request $request){
->>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
 
         //dd($request);
 
@@ -189,26 +160,20 @@ class FinanciamientoController extends Controller
        // dd($usuario_id );
         //return Redirect::to('/miHistorico', ['id'=> $usuario_id  ] );
         return redirect()->route('miHistorico', ['id'=> $usuario_id  ]);
-<<<<<<< HEAD
 
         
      }
 
      public function miHistorico( $id ){
 
-        $finan =Financiamiento::where('user', '=', $id )
-        //->where('ref', '!=', 'C' )
-        ->get(); 
-
-       
+        $finan =Financiamiento::where('user', '=', $id )->get(); 
 
         return view('app.historico', compact('finan') );
                  
      }
+    
 
      public function historico( ){
-=======
->>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
 
         
         $finan = DB::table('financiamientos')->select('users.name', 'financiamientos.user', 'financiamientos.fecha' ,'financiamientos.comprobante', 'financiamientos.monto', 'financiamientos.status', 'financiamientos.cuotasPagadas', 'financiamientos.cuota')
@@ -299,21 +264,6 @@ class FinanciamientoController extends Controller
                  
      }
 
-    public function miHistorico( $id ){
-
-        $finan =Financiamiento::where('user', '=', $id )->get(); 
-
-        return view('app.historico', compact('finan') );
-                 
-     }
-
-     public function historico( ){
-
-        $finan =Financiamiento::all(); 
-
-        return view('app.historico', compact('finan') );
-                 
-     }
 
     
 }

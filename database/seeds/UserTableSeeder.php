@@ -16,8 +16,8 @@ class UserTableSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('users')->insert([
             'name' => 'Administrador',
-            'email' => 'info@larepaweb.com.ve',
-            'password' => bcrypt('venezuela'),
+            'email' => 'Mavarezi1900@gmail.com',
+            'password' => bcrypt('admin1234'),
             
         ]);
     }

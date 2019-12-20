@@ -64,18 +64,13 @@
 
                   </div>
                   <div class="row">
-<<<<<<< HEAD
 
                   <div class="col-md-6 pr-1">
-=======
-                    <div class="col-md-12 ">
->>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
                       <div class="form-group">
                         <label>Monto Original</label>
                         <input type="text" readonly="readonly" name="montocompleto" class="form-control" placeholder="Monto" value="{{ $monto }} ">
                       </div>
                     </div>
-<<<<<<< HEAD
 
                     <div class="col-md-6 pl-1">
                       <div class="form-group">
@@ -86,8 +81,6 @@
                     </div>
 
                     
-=======
->>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
                   
                   </div>
                   <div class="row">

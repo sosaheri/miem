@@ -51,7 +51,6 @@
               </li>
 
               @if ( Auth::user()->hasRole('admin'))
-<<<<<<< HEAD
               <li>
                   <a href="{{ url('/historico' ) }}">
                     <i class="nc-icon nc-tile-56"></i>
@@ -63,27 +62,11 @@
 
               <li>
                   <a href="{{ url('/miHistorico', Auth::user()->id) }}">
-=======
-              <li>
-                  <a href="{{ url('/historico' ) }}">
->>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
                     <i class="nc-icon nc-tile-56"></i>
                     <p>Historial de Financiamientos y Pagos</p>
                   </a>
               </li>
 
-<<<<<<< HEAD
-=======
-              @else
-
-              <li>
-                  <a href="{{ url('/miHistorico', Auth::user()->id) }}">
-                    <i class="nc-icon nc-tile-56"></i>
-                    <p>Historial de Financiamientos</p>
-                  </a>
-              </li>
-
->>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
               @endif
 
             <!-- <li>
