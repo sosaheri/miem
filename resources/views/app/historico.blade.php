@@ -5,6 +5,7 @@
 @if (  Auth::user()->hasRole('admin')  )
 
 <div class="content">
+<<<<<<< HEAD
 
 <div class="row">
 
@@ -17,11 +18,17 @@
 
 </div>
 
+=======
+>>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
         <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
+<<<<<<< HEAD
                 <h4 class="card-title"> Historial de Financiamientos en Moratoria</h4>
+=======
+                <h4 class="card-title"> Historico</h4>
+>>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -37,9 +44,14 @@
                         Número de comprobante
                       </th>
                       <th>
+<<<<<<< HEAD
                         Monto al 50%
                       </th>
 
+=======
+                        Monto
+                      </th>
+>>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
                       <th class="text-right">
                         Estado
                       </th>
@@ -51,7 +63,11 @@
     
                       <tr>
                       <td>
+<<<<<<< HEAD
                       <a href="{{ url('/verUsuario', $fi->user) }}"> {{ $fi->name }} </a>
+=======
+                        Usuario
+>>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
                         </td>
                         <td>
                         {{ $fi->fecha }}
@@ -60,6 +76,7 @@
                         {{ $fi->comprobante }}
                         </td>
                         <td>
+<<<<<<< HEAD
                         {{ number_format((float)(float)$fi->monto, 2, ',', '') }}
                         </td>
              
@@ -72,6 +89,12 @@
                             @elseif( $fi->status == '' )
                             <span class="payment-404" >Sin Datos de Pago</span>
                             @endif
+=======
+                        {{ $fi->monto }}
+                        </td>
+                        <td class="text-right">
+                            <a href="#">{{ $fi->status }}</a>
+>>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
                         </td>
                       </tr>
 
@@ -92,6 +115,7 @@
 @else
 
 <div class="content">
+<<<<<<< HEAD
 
 <div class="row">
 
@@ -103,11 +127,17 @@
 </div>
 
 </div>
+=======
+>>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
         <div class="row">
           <div class="col-md-12">
             <div class="card">
               <div class="card-header">
+<<<<<<< HEAD
                 <h4 class="card-title"> Historial de Financiamientos en Moratoria</h4>
+=======
+                <h4 class="card-title"> Historico</h4>
+>>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
               </div>
               <div class="card-body">
                 <div class="table-responsive">
@@ -120,7 +150,11 @@
                         Número de comprobante
                       </th>
                       <th>
+<<<<<<< HEAD
                         Monto al 50%
+=======
+                        Monto
+>>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
                       </th>
                       <th class="text-right">
                         Estado
@@ -139,6 +173,7 @@
                         {{ $fi->comprobante }}
                         </td>
                         <td>
+<<<<<<< HEAD
                         {{     number_format((float)(float)$fi->monto, 2, ',', '') }}
                         </td>
                         <td class="text-right">
@@ -151,6 +186,12 @@
                             @endif
                           
                             
+=======
+                        {{ $fi->monto }}
+                        </td>
+                        <td class="text-right">
+                            <a href="./detalleFinanciamiento.html">{{ $fi->status }}</a>
+>>>>>>> 6addbd22450faec99932f0552b2f46a4c6f558bd
                         </td>
                       </tr>
 
