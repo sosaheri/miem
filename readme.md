@@ -65,36 +65,6 @@ sudo chown -R www-data: storage
 sudo chmod -R 755 storage
 ```
 
-Apunte a la carpeta /public
-
-```
-nano /etc/apache2/sites-enabled/000-default.conf
-```
-
-remplace
-
-```
-DocumentRoot /var/www/html
-
-<Directory /var/www/html/>
-```
-
-con
-
-```
-DocumentRoot /var/www/su-dominio/public
-
-<Directory /var/www/su-domio/public/>
-```
-
-
-y agregue
-
-```
-RewriteEngine On
-RewriteBase /var/www/su-dominio/public
-```
-
 Guarde y reinicie su servidor
 
 ```
@@ -128,3 +98,9 @@ php artisan migrate
 php artisan db:seed
 ```
 
+Los datos del administrador generico son:
+
+```
+Mavarezi1900@gmail.com
+admin1234
+```
