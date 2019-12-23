@@ -1,10 +1,6 @@
 # Moratoria Impositiva Extraordinaria Municipal Año 2019/2020
 
-Aplicación desarrollada con el framework Laravel 5.6 para la captura de deuda de impuesto y pago via electronica
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Aplicación desarrollada con el framework Laravel 5.7 para la captura de deuda de impuesto y pago via electronica
 
 ### Prerequisitos
 
@@ -16,82 +12,99 @@ OpenSSL PHP Extension
 PDO PHP Extension
 Mbstring PHP Extension
 Tokenizer PHP Extension
-NPM
+Composer
+Git
+DomPDF
 Access Token & API Key de Mercado Pago
 ```
 
 ### Instalación
 
-Clone el repositorio: git clone git@github.com:sosaheri/miem.git
-ve al repositorio: cd miem
-Instalar dependencias: composer install
-Copiar .env.example a .env: cp .env.example .env
-Crear key de aplicación: php artisan key:generate
-llenar datos de MDP en .env o esperar y llenarlos por medio de la interfaz gráfica
 
-
+Clone el repositorio: 
 ```
-Give the example
+git clone git@github.com:sosaheri/miem.git
 ```
 
-And repeat
-
+vaya al repositorio: 
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+cd miem
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
+Instale dependencias
 
 ```
-Give an example
+composer install
 ```
 
-## Deployment
+de permiso a carpeta storage
 
-Add additional notes about how to deploy this on a live system
+```
+sudo chown -R www-data: storage
+sudo chmod -R 755 storage
+```
 
-## Built With
+Apunte a la carpeta /public
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+```
+nano /etc/apache2/sites-enabled/000-default.conf
+```
 
-## Contributing
+reemplace
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+```
+DocumentRoot /var/www/html
 
-## Versioning
+<Directory /var/www/html/>
+```
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+con
 
-## Authors
+```
+DocumentRoot /var/www/gestion-incidencias/public
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+<Directory /var/www/gestion-incidencias/public/>
+```
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+y agregue
 
-## License
+```
+RewriteEngine On
+RewriteBase /var/www/gestion-incidencias/public
+```
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Guarde y reinicie su servidor
 
-## Acknowledgments
+```
+sudo service apache2 restart
+```
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+Copiar .env.example a .env: 
+
+```
+cp .env.example .env
+```
+
+Crear key de aplicación: 
+
+```
+php artisan key:generate
+```
+
+```
+Llenar datos de MDP en .env o esperar y llenarlos por medio de la interfaz gráfica
+```
+
+
+## Ejecute las migraciones
+
+luego de haber creado su base de datos y colocados los datos en .env permita que laravel cree las tablas correspondientes y datos básicos
+
+```
+php artisan migrate
+```
+
+```
+php artisan db:seed
+```
+
