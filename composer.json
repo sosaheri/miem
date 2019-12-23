@@ -16,7 +16,6 @@
         "laravel/framework": "5.8.*",
         "laravel/tinker": "^1.0",
         "mercadopago/dx-php": "dev-master",
-        "qcod/laravel-app-settings": "^1.2",
         "spatie/pdf-to-text": "^1.2"
     },
     "require-dev": {
