@@ -1,24 +1,34 @@
-# Project Title
+# Moratoria Impositiva Extraordinaria Municipal Año 2019/2020
 
-One Paragraph of project description goes here
+Aplicación desarrollada con el framework Laravel 5.6 para la captura de deuda de impuesto y pago via electronica
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+### Prerequisitos
 
-What things you need to install the software and how to install them
+¿Que necesita tener instalado en su servidor?
 
 ```
-Give examples
+PHP >= 7.2
+OpenSSL PHP Extension
+PDO PHP Extension
+Mbstring PHP Extension
+Tokenizer PHP Extension
+NPM
+Access Token & API Key de Mercado Pago
 ```
 
-### Installing
+### Instalación
 
-A step by step series of examples that tell you how to get a development env running
+Clone el repositorio: git clone git@github.com:sosaheri/miem.git
+ve al repositorio: cd miem
+Instalar dependencias: composer install
+Copiar .env.example a .env: cp .env.example .env
+Crear key de aplicación: php artisan key:generate
+llenar datos de MDP en .env o esperar y llenarlos por medio de la interfaz gráfica
 
-Say what the step will be
 
 ```
 Give the example
