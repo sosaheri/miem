@@ -180,7 +180,7 @@
             </div>
             <div class="card-body " style="--aspect-ratio: 16/9;">
 
-              <iframe src="https://servicios2.cordoba.gov.ar/Tributario/Tributo.aspx?t=txCaWS#no-back-button" 
+              <iframe src="https://servicios2.cordoba.gov.ar/Tributario/Tributo.aspx" 
               style="border:0px #ffffff none;" 
               name="PortalTributario" scrolling="yes" 
               frameborder="1" 
