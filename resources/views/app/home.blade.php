@@ -194,6 +194,9 @@
             
             <div class="card-footer">
               <h5 class="card-title">Pulse REGRESAR, para actualizar los datos.</h5>
+              <p>Si no puede descargar el cedulon desde esta ventana interna puedes presionar el siguiente boton para abrir una ventana nueva y luego puedes regresar y seguir el proceso desde aca.
+              </p>
+              <a href="https://servicios2.cordoba.gov.ar/Tributario/Tributo.aspx" target="_blank"><button type="" class="btn btn-primary btn-round">Abrir Ventana</button></a>
             </div>
 
           </div>
